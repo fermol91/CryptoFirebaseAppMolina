@@ -16,6 +16,9 @@ import Trade from './Views/Trade/Trade';
 //Components
 import Header from './Components/Header/Header';
 import NavBar from './Components/NavBar/NavBar';
+import TradeContextProvider from './Context/TradeContext';
+
+
 
 
 
@@ -24,6 +27,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <TradeContextProvider>
         <Header />
         <NavBar />
         <Routes>
@@ -35,7 +39,7 @@ function App() {
             <Route path='/gender/:gender' element={<GenderType />} />
             
         </Routes>
-     
+        </TradeContextProvider>
       </div>  
     </Router>
   );

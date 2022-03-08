@@ -35,7 +35,7 @@ useEffect(() => {
         {coinsData.map((data) => {
             return (
                 <Link to={`details/${data.id}`}>
-                    <CardComponents coinsData={data} key={data.id} />;
+                    <CardComponents coinsData={data} key={data.id} />
                 </Link>    
             )
         })}

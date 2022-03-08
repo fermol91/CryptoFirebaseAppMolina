@@ -10,18 +10,21 @@ import {
 import {db} from '../../Firebase/FirebaseConfig';
 import CardComponents from '../../Components/CardComponents/CardComponents';
 
+import { useContext } from 'react';
+import { TradeContext } from '../../Context/TradeContext';
 
-const CoinDetail = () => {
+
+const CoinDetail = (cryptoCoin) => {
   const [coinData, setCoinData] = useState([]); 
    
-  console.log(coinData)
+  //console.log(coinData)
   //const id = useParams()
 
   //let coinId = id.id
 
   const {id} = useParams()
 
-  console.log(id)
+  //console.log(id)
 
   useEffect(() => {
     const getCoin = async () => {
@@ -39,12 +42,22 @@ const CoinDetail = () => {
     getCoin();
   }, [id]);
 
+  const {tradeList, sendToTrade} = useContext(TradeContext)
+  
+  function onAdd(cant) {
+    console.log(cant)
+    sendToTrade({...cryptoCoin, cantidad: cant} )
+  }
+
   return (
     <div>
         {coinData.map((data) => {
             return <CardComponents coinsData={data} key={data.id} />;
+            
         })}
+        <button onClick={onAdd(5)}>Send to Trade</button>
     </div>
+    
   )
 }
 
