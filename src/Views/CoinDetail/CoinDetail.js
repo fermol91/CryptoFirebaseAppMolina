@@ -43,7 +43,7 @@ const CoinDetail = (cryptoCoin) => {
   }, [id]);
 
   const {tradeList, sendToTrade} = useContext(TradeContext)
-  
+  //revisar esta funcion
   function onAdd(cant) {
     console.log(cant)
     sendToTrade({...cryptoCoin, cantidad: cant} )

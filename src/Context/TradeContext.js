@@ -8,7 +8,7 @@ export const TradeContext = createContext ([])
 
 
 const TradeContextProvider = ({children}) => {
-
+//revisar esta funcion
     const [tradeList, setTradeList] = useState([])
     function sendToTrade (items) {
         setTradeList(...tradeList, items)
