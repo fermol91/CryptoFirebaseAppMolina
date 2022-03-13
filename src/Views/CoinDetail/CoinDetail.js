@@ -1,18 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import {
-	collection,
-	query,
-	where,
-	getDocs,
-	documentId,
-} from 'firebase/firestore';
+import {	collection,	query,	where,	getDocs,	documentId,} from 'firebase/firestore';
 import {db} from '../../Firebase/FirebaseConfig';
 import CardComponents from '../../Components/CardComponents/CardComponents';
-
+import Counter from '../../Components/Counter/Counter';
+/*
 import { useContext } from 'react';
 import { TradeContext } from '../../Context/TradeContext';
-
+*/
 
 const CoinDetail = (cryptoCoin) => {
   const [coinData, setCoinData] = useState([]); 
@@ -21,6 +16,7 @@ const CoinDetail = (cryptoCoin) => {
   //const id = useParams()
 
   //let coinId = id.id
+  const data = useState ();
 
   const {id} = useParams()
 
@@ -42,12 +38,12 @@ const CoinDetail = (cryptoCoin) => {
     getCoin();
   }, [id]);
 
-  const {tradeList, sendToTrade} = useContext(TradeContext)
+  /*const {tradeList, sendToTrade} = useContext(TradeContext)
   //revisar esta funcion
   function onAdd(cant) {
     console.log(cant)
     sendToTrade({...cryptoCoin, cantidad: cant} )
-  }
+  }*/
 
   return (
     <div>
@@ -55,10 +51,15 @@ const CoinDetail = (cryptoCoin) => {
             return <CardComponents coinsData={data} key={data.id} />;
             
         })}
-        <button onClick={onAdd(5)}>Send to Trade</button>
+      <Counter stock={data.cantidad} item={data}/> 
     </div>
+    
+      
     
   )
 }
 
 export default CoinDetail
+
+
+//<button onClick={onAdd(5)}>Send to Trade</button>

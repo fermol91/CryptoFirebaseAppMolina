@@ -11,12 +11,13 @@ import Contact from './Views/Contact/Contact';
 import CoinDetail from './Views/CoinDetail/CoinDetail';
 import GenderType from './Views/GenderType/GenderType';
 import Trade from './Views/Trade/Trade';
-
+import TradeIT from './Views/TradeIt/TradeIT';
 
 //Components
 import Header from './Components/Header/Header';
 import NavBar from './Components/NavBar/NavBar';
-import TradeContextProvider from './Context/TradeContext';
+import { TradeContextProvider } from './Context/TradeContext';
+
 
 
 
@@ -25,9 +26,10 @@ import TradeContextProvider from './Context/TradeContext';
 
 function App() {
   return (
+    <TradeContextProvider>
     <Router>
       <div className="App">
-        <TradeContextProvider>
+        
         <Header />
         <NavBar />
         <Routes>
@@ -35,13 +37,15 @@ function App() {
 						<Route path='/about' element={<About />} />
 						<Route path='/contact' element={<Contact />} />
             <Route path='/trade' element={<Trade />} />
+            <Route path='/tradeIT' element={<TradeIT/>}/>
             <Route path='/details/:id' element={<CoinDetail />} />
             <Route path='/gender/:gender' element={<GenderType />} />
             
         </Routes>
-        </TradeContextProvider>
+        
       </div>  
     </Router>
+    </TradeContextProvider>
   );
 };
 
